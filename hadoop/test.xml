@@ -1,1 +1,17 @@
-a
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<property>
+		<name>fs.default.name</name>
+		<value>hdfs://hadoop.master.test.com:9000/</value>
+		<description>指定NameNode</description>
+	</property>
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>/home/hadoop/tmp</value>
+		<description>指定临时目录，linux本地路径</description>
+	</property>
+</configuration>
