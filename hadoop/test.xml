@@ -1,0 +1,10 @@
+stopping jobtracker
+hadoop.slave1.test.com: stopping tasktracker
+hadoop.slave2.test.com: stopping tasktracker
+stopping namenode
+hadoop.slave2.test.com: stopping datanode
+hadoop.slave1.test.com: stopping datanode
+hadoop.master.test.com: stopping secondarynamenode
+[hadoop@hadoop ~]$ jps
+27728 Jps
+[hadoop@hadoop ~]$ 
