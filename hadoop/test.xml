@@ -27,7 +27,9 @@
 <configuration>
         <property>
                 <name>dfs.name.dir</name>
-                <value>/home/hadoop/namenode/datas/data1,/home/hadoop/namenode/datas/data2</value>
+                <value>
+                	/home/hadoop/namenode/datas/data1,/home/hadoop/namenode/datas/data2
+                </value>
                 <description>
 			linux本地路径，用于存储集群namespace和transaction的日志信息。
 			多个路径用逗号分隔.
