@@ -1,62 +1,21 @@
-[hadoop@hadoop ~]$ tar -czf hadoop-1.2.0.tar.gz hadoop-1.2.0
+[hadoop@hadoop ~]$ jps
+8397 NameNode
+24173 Jps
+8649 JobTracker
+8570 SecondaryNameNode
 [hadoop@hadoop ~]$ 
-tar解压缩
-[hadoop@hadoop ~]$ hadoop namenode -format
+
+
+[hadoop@hadoop conf]$ jps
+11196 Jps
+11016 DataNode
+11117 TaskTracker
+[hadoop@hadoop ~]$
+
+
+[hadoop@hadoop ~]$ hadoop fs -ls /
 Warning: $HADOOP_HOME is deprecated.
 
-13/12/28 00:37:40 INFO namenode.NameNode: STARTUP_MSG: 
-/************************************************************
-STARTUP_MSG: Starting NameNode
-STARTUP_MSG:   host = hadoop.master.test.com/192.168.177.133
-STARTUP_MSG:   args = [-format]
-STARTUP_MSG:   version = 1.2.0
-STARTUP_MSG:   build = https://svn.apache.org/repos/asf/hadoop/common/branches/branch-1.2 -r 1479473; 
-compiled by 'hortonfo' on Mon May  6 06:59:37 UTC 2013
-STARTUP_MSG:   java = 1.6.0_24
-************************************************************/
-13/12/28 00:37:40 INFO util.GSet: Computing capacity for map BlocksMap
-13/12/28 00:37:40 INFO util.GSet: VM type       = 32-bit
-13/12/28 00:37:40 INFO util.GSet: 2.0% max memory = 1013645312
-13/12/28 00:37:40 INFO util.GSet: capacity      = 2^22 = 4194304 entries
-13/12/28 00:37:40 INFO util.GSet: recommended=4194304, actual=4194304
-13/12/28 00:37:40 INFO namenode.FSNamesystem: fsOwner=hadoop
-13/12/28 00:37:40 INFO namenode.FSNamesystem: supergroup=supergroup
-13/12/28 00:37:40 INFO namenode.FSNamesystem: isPermissionEnabled=true
-13/12/28 00:37:40 INFO namenode.FSNamesystem: dfs.block.invalidate.limit=100
-13/12/28 00:37:40 INFO namenode.FSNamesystem: isAccessTokenEnabled=false accessKeyUpdateInterval=0 min(s), 
-accessTokenLifetime=0 min(s)
-13/12/28 00:37:40 INFO namenode.FSEditLog: dfs.namenode.edits.toleration.length = 0
-13/12/28 00:37:40 INFO namenode.NameNode: Caching file names occuring more than 10 times 
-13/12/28 00:37:40 INFO common.Storage: Image file of size 112 saved in 0 seconds.
-13/12/28 00:37:40 INFO namenode.FSEditLog: closing edit log: position=4, 
-editlog=/home/hadoop/namenode/datas/data1/current/edits
-13/12/28 00:37:40 INFO namenode.FSEditLog: close success: truncate to 4, 
-editlog=/home/hadoop/namenode/datas/data1/current/edits
-13/12/28 00:37:40 INFO common.Storage: Storage directory 
-/home/hadoop/namenode/datas/data1 has been successfully formatted.
-13/12/28 00:37:40 INFO common.Storage: Image file of size 112 saved in 0 seconds.
-13/12/28 00:37:40 INFO namenode.FSEditLog: closing edit log: position=4, 
-editlog=/home/hadoop/namenode/datas/data2/current/edits
-13/12/28 00:37:40 INFO namenode.FSEditLog: close success: truncate to 4,
- editlog=/home/hadoop/namenode/datas/data2/current/edits
-13/12/28 00:37:40 INFO common.Storage: Storage directory /home/hadoop/namenode/datas/data2 has been successfully formatted.
-13/12/28 00:37:40 INFO namenode.NameNode: SHUTDOWN_MSG: 
-/************************************************************
-SHUTDOWN_MSG: Shutting down NameNode at hadoop.master.test.com/192.168.177.133
-************************************************************/
+Found 1 items
+drwxr-xr-x   - hadoop supergroup          0 2013-12-28 00:37 /home
 
-[hadoop@hadoop ~]$ start-all.sh 
-Warning: $HADOOP_HOME is deprecated.
-
-starting namenode, logging to /usr/lib/hadoop/libexec/../logs/hadoop-hadoop-namenode-hadoop.master.test.com.out
-hadoop.slave1.test.com: starting datanode, logging to 
-/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-datanode-hadoop.slave1.test.com.out
-hadoop.slave2.test.com: starting datanode, logging to 
-/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-datanode-hadoop.slave2.test.com.out
-hadoop.master.test.com: starting secondarynamenode, logging to 
-/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-secondarynamenode-hadoop.master.test.com.out
-starting jobtracker, logging to /usr/lib/hadoop/libexec/../logs/hadoop-hadoop-jobtracker-hadoop.master.test.com.out
-hadoop.slave2.test.com: starting tasktracker, logging to 
-/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-tasktracker-hadoop.slave2.test.com.out
-hadoop.slave1.test.com: starting tasktracker, logging to 
-/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-tasktracker-hadoop.slave1.test.com.out
