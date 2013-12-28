@@ -1,73 +1,62 @@
-<?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+[hadoop@hadoop ~]$ tar -czf hadoop-1.2.0.tar.gz hadoop-1.2.0
+[hadoop@hadoop ~]$ 
+tar解压缩
+[hadoop@hadoop ~]$ hadoop namenode -format
+Warning: $HADOOP_HOME is deprecated.
 
-<!-- Put site-specific property overrides in this file. -->
+13/12/28 00:37:40 INFO namenode.NameNode: STARTUP_MSG: 
+/************************************************************
+STARTUP_MSG: Starting NameNode
+STARTUP_MSG:   host = hadoop.master.test.com/192.168.177.133
+STARTUP_MSG:   args = [-format]
+STARTUP_MSG:   version = 1.2.0
+STARTUP_MSG:   build = https://svn.apache.org/repos/asf/hadoop/common/branches/branch-1.2 -r 1479473; 
+compiled by 'hortonfo' on Mon May  6 06:59:37 UTC 2013
+STARTUP_MSG:   java = 1.6.0_24
+************************************************************/
+13/12/28 00:37:40 INFO util.GSet: Computing capacity for map BlocksMap
+13/12/28 00:37:40 INFO util.GSet: VM type       = 32-bit
+13/12/28 00:37:40 INFO util.GSet: 2.0% max memory = 1013645312
+13/12/28 00:37:40 INFO util.GSet: capacity      = 2^22 = 4194304 entries
+13/12/28 00:37:40 INFO util.GSet: recommended=4194304, actual=4194304
+13/12/28 00:37:40 INFO namenode.FSNamesystem: fsOwner=hadoop
+13/12/28 00:37:40 INFO namenode.FSNamesystem: supergroup=supergroup
+13/12/28 00:37:40 INFO namenode.FSNamesystem: isPermissionEnabled=true
+13/12/28 00:37:40 INFO namenode.FSNamesystem: dfs.block.invalidate.limit=100
+13/12/28 00:37:40 INFO namenode.FSNamesystem: isAccessTokenEnabled=false accessKeyUpdateInterval=0 min(s), 
+accessTokenLifetime=0 min(s)
+13/12/28 00:37:40 INFO namenode.FSEditLog: dfs.namenode.edits.toleration.length = 0
+13/12/28 00:37:40 INFO namenode.NameNode: Caching file names occuring more than 10 times 
+13/12/28 00:37:40 INFO common.Storage: Image file of size 112 saved in 0 seconds.
+13/12/28 00:37:40 INFO namenode.FSEditLog: closing edit log: position=4, 
+editlog=/home/hadoop/namenode/datas/data1/current/edits
+13/12/28 00:37:40 INFO namenode.FSEditLog: close success: truncate to 4, 
+editlog=/home/hadoop/namenode/datas/data1/current/edits
+13/12/28 00:37:40 INFO common.Storage: Storage directory 
+/home/hadoop/namenode/datas/data1 has been successfully formatted.
+13/12/28 00:37:40 INFO common.Storage: Image file of size 112 saved in 0 seconds.
+13/12/28 00:37:40 INFO namenode.FSEditLog: closing edit log: position=4, 
+editlog=/home/hadoop/namenode/datas/data2/current/edits
+13/12/28 00:37:40 INFO namenode.FSEditLog: close success: truncate to 4,
+ editlog=/home/hadoop/namenode/datas/data2/current/edits
+13/12/28 00:37:40 INFO common.Storage: Storage directory /home/hadoop/namenode/datas/data2 has been successfully formatted.
+13/12/28 00:37:40 INFO namenode.NameNode: SHUTDOWN_MSG: 
+/************************************************************
+SHUTDOWN_MSG: Shutting down NameNode at hadoop.master.test.com/192.168.177.133
+************************************************************/
 
-<configuration>
-        <property>
-                <name>fs.default.name</name>
-                <value>hdfs://hadoop.master.test.com:9000</value>
-                <description>指定NameNode</description>
-        </property>
-        <property>
-                <name>hadoop.tmp.dir</name>
-                <value>/home/hadoop/tmp</value>
-                <description>指定临时目录，linux本地路径</description>
-        </property>
+[hadoop@hadoop ~]$ start-all.sh 
+Warning: $HADOOP_HOME is deprecated.
 
-</configuration>
-
-
------
-<?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-
-<!-- Put site-specific property overrides in this file. -->
-
-<configuration>
-        <property>
-                <name>dfs.name.dir</name>
-                <value>
-                	/home/hadoop/namenode/datas/data1,/home/hadoop/namenode/datas/data2
-                </value>
-                <description>
-			linux本地路径，用于存储集群namespace和transaction的日志信息。
-			多个路径用逗号分隔.
-			建议使用多个路径，虽然冗余，但是会提高安全性.
-		</description>
-        </property>
-        <property>
-                <name>dfs.data.dir</name>
-                <value>/home/hadoop/datanode/datas/data1,/home/hadoop/datanode/datas/data2</value>
-                <description>
-			linux本地路径，DataNode用于存储集群数据。
-			多个路径用逗号分隔。多个路径，有利于磁盘的I/O.
-		</description>
-        </property>
-        <property>
-                <name>dfs.replication</name>
-                <value>2</value>
-                <description>
-                	块副本的个数，默认为3，
-                	但是不能超过集群DataNode节点的个数。
-                <description>
-        </property>
-</configuration>
---------
-<?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-
-<!-- Put site-specific property overrides in this file. -->
-
-<configuration>
-        <property>
-                <name>mapred.job.tracker</name>
-                <value>hadoop.master.test.com:9001</value>
-                <description>指定JobTracker的scoket</description>
-        </property>
-        <property>
-                <name>mapred.local.dir</name>
-                <value>/home/hadoop/tmp/tmp-01,/home/hadoop/tmp/tmp-02</value>
-                <description>linux本地路径，存储DataNode的临时数据</description>
-        </property>
-</configuration>
+starting namenode, logging to /usr/lib/hadoop/libexec/../logs/hadoop-hadoop-namenode-hadoop.master.test.com.out
+hadoop.slave1.test.com: starting datanode, logging to 
+/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-datanode-hadoop.slave1.test.com.out
+hadoop.slave2.test.com: starting datanode, logging to 
+/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-datanode-hadoop.slave2.test.com.out
+hadoop.master.test.com: starting secondarynamenode, logging to 
+/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-secondarynamenode-hadoop.master.test.com.out
+starting jobtracker, logging to /usr/lib/hadoop/libexec/../logs/hadoop-hadoop-jobtracker-hadoop.master.test.com.out
+hadoop.slave2.test.com: starting tasktracker, logging to 
+/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-tasktracker-hadoop.slave2.test.com.out
+hadoop.slave1.test.com: starting tasktracker, logging to 
+/usr/lib/hadoop/libexec/../logs/hadoop-hadoop-tasktracker-hadoop.slave1.test.com.out
