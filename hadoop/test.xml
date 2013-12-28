@@ -29,21 +29,26 @@
                 <name>dfs.name.dir</name>
                 <value>/home/hadoop/namenode/datas/data1,/home/hadoop/namenode/datas/data2</value>
                 <description>
-					linux本地路径，用于存储集群namespace和transaction的日志信息。多个路径用逗号分隔.
-					建议使用多个路径，虽然冗余，但是会提高安全性.
-				</description>
+			linux本地路径，用于存储集群namespace和transaction的日志信息。
+			多个路径用逗号分隔.
+			建议使用多个路径，虽然冗余，但是会提高安全性.
+		</description>
         </property>
         <property>
                 <name>dfs.data.dir</name>
                 <value>/home/hadoop/datanode/datas/data1,/home/hadoop/datanode/datas/data2</value>
                 <description>
-					linux本地路径，DataNode用于存储集群数据。多个路径用逗号分隔。多个路径，有利于磁盘的I/O.
-				</description>
+			linux本地路径，DataNode用于存储集群数据。
+			多个路径用逗号分隔。多个路径，有利于磁盘的I/O.
+		</description>
         </property>
         <property>
                 <name>dfs.replication</name>
                 <value>2</value>
-                <description>块副本的个数，默认为3，但是不能超过集群DataNode节点的个数。<description>
+                <description>
+                	块副本的个数，默认为3，
+                	但是不能超过集群DataNode节点的个数。
+                <description>
         </property>
 </configuration>
 --------
