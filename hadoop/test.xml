@@ -1,21 +1,26 @@
-[hadoop@hadoop ~]$ ssh hadoop.salve1.test.com
-ssh: connect to host hadoop.salve1.test.com port 22: Connection refused
----------
-[hadoop@hadoop ~]$ chkconfig iptables off
-[hadoop@hadoop ~]$ reboot
+export JAVA_HOME=/usr/lib/java
+export PATH=$JAVA_HOME/bin:$PATH
 
----------------
-master-salve1
-[hadoop@hadoop ~]$ ssh hadoop.slave1.test.com
-Last login: Mon Dec 23 03:47:47 2013 from hadoop.slave2.test.com
-[hadoop@hadoop ~]$ 
-[hadoop@hadoop ~]$ ssh hadoop.slave2.test.com
-Last login: Mon Dec 23 03:48:08 2013 from hadoop.slave1.test.com
-[hadoop@hadoop ~]$ 
-salve1-master
-[hadoop@hadoop ~]$ ssh hadoop.master.test.com
-Last login: Mon Dec 23 03:47:47 2013 from hadoop.slave2.test.com
-[hadoop@hadoop ~]$ 
-[hadoop@hadoop ~]$ ssh hadoop.slave1.test.com
-Last login: Mon Dec 23 03:48:08 2013 from hadoop.slave1.test.com
-[hadoop@hadoop ~]$ 
+export HADOOP_HOME=/usr/lib/hadoop
+export PATH=$HADOOP_HOME/bin:$PATH
+
+
+
+-----
+
+# Set Hadoop-specific environment variables here.
+
+# The only required environment variable is JAVA_HOME.  All others are
+# optional.  When running a distributed configuration it is best to
+# set JAVA_HOME in this file, so that it is correctly defined on
+# remote nodes.
+
+# The java implementation to use.  Required.
+export JAVA_HOME=/usr/lib/java
+
+---------------------
+hadoop.master.test.com
+
+hadoop.slave1.test.com
+hadoop.slave2.test.com
+---------------------
