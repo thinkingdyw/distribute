@@ -1,27 +1,21 @@
-[hadoop@hadoop .ssh]$ scp id_rsa.pub hadoop@hadoop.slave1.test.com:/home/hadoop/keys
-The authenticity of host 'hadoop.slave1.test.com (192.168.177.134)' can't be established.
-RSA key fingerprint is 49:ad:f0:f2:ad:8d:2e:94:fc:22:d8:fb:02:48:7f:72.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'hadoop.slave1.test.com,192.168.177.134' (RSA) to the list of known hosts.
-hadoop@hadoop.slave1.test.com's password: 
-id_rsa.pub                               100%  411     0.4KB/s   00:00    
-[hadoop@hadoop .ssh]$ 
-
------------
-
-[hadoop@hadoop ~]$ cat keys >> ~/.ssh/authorized_keys
-[hadoop@hadoop ~]$ 
-
-------------------
-[hadoop@hadoop .ssh]$ scp id_rsa.pub hadoop@hadoop.master.test.com:/home/hadoop/keys
-The authenticity of host 'hadoop.master.test.com (192.168.177.133)' can't be established.
-RSA key fingerprint is 9c:b7:bf:50:2b:45:4e:10:8b:2b:58:08:f0:51:b3:7b.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'hadoop.master.test.com,192.168.177.133' (RSA) to the list of known hosts.
-hadoop@hadoop.master.test.com's password: 
-id_rsa.pub                               100%  822     0.8KB/s   00:00    
-[hadoop@hadoop .ssh]$ 
-
+[hadoop@hadoop ~]$ ssh hadoop.salve1.test.com
+ssh: connect to host hadoop.salve1.test.com port 22: Connection refused
 ---------
-[hadoop@hadoop ~]$ cat keys >> ~/.ssh/authorized_keys
+[hadoop@hadoop ~]$ chkconfig iptables off
+[hadoop@hadoop ~]$ reboot
+
+---------------
+master-salve1
+[hadoop@hadoop ~]$ ssh hadoop.slave1.test.com
+Last login: Mon Dec 23 03:47:47 2013 from hadoop.slave2.test.com
+[hadoop@hadoop ~]$ 
+[hadoop@hadoop ~]$ ssh hadoop.slave2.test.com
+Last login: Mon Dec 23 03:48:08 2013 from hadoop.slave1.test.com
+[hadoop@hadoop ~]$ 
+salve1-master
+[hadoop@hadoop ~]$ ssh hadoop.master.test.com
+Last login: Mon Dec 23 03:47:47 2013 from hadoop.slave2.test.com
+[hadoop@hadoop ~]$ 
+[hadoop@hadoop ~]$ ssh hadoop.slave1.test.com
+Last login: Mon Dec 23 03:48:08 2013 from hadoop.slave1.test.com
 [hadoop@hadoop ~]$ 
