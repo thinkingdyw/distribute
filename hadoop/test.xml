@@ -1,12 +1,42 @@
-<action name='java1'>
-        <java>
-                <job-tracker>foo.bar:8021</job-tracker>
-                <name-node>foo1.bar:8020</name-node>
-                <configuration>
+<workflow-app xmlns='uri:oozie:workflow:0.1' name='java-wf'>
+        <start to='java1' />
+        <action name='java1'>
+                <java>
+                        <job-tracker>${jobTracker}</job-tracker>
+                        <name-node>${nameNode}</name-node>
+                        <configuration>
+                                <property>
+                                        <name>mapred.job.queue.name</name>
+                                        <value>${queueName}</value>
+                                </property>
+                        </configuration>
+                        <main-class>org.apache.oozie.test.MyTest</main-class>
+                        <arg>${outputFileName}</arg>
+                        <capture-output/>
+                </java>
+                <ok to="pig1" />
+                <error to="fail" />
+        </action>
+ 
+        <action name='pig1'>
+                <pig>
+                        <job-tracker>${jobTracker}</job-tracker>
+                        <name-node>${nameNode}</name-node>
+                        <configuration>
                         <property>
                                 <name>mapred.job.queue.name</name>
-                                <value>def</value>
-                        </property>
-                </configuration>
-        </java>
-</action>
+                                <value>${queueName}</value>
+                                </property>
+                        </configuration>
+                        <script>script.pig</script>
+                        <param>MY_VAR=${wf:actionData('java1')['PASS_ME']}</param>
+                </pig>
+                <ok to="end" />
+                <error to="fail" />
+        </action>
+ 
+        <kill name="fail">
+                <message>Pig failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+        </kill>
+        <end name='end' />
+</workflow-app>
