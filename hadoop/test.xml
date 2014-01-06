@@ -1,10 +1,10 @@
 <action name='java1'>
-  <java>
-    ...
-    <main-class> a.b.c.MyJavaMain </main-class>
-    <java-opts> -Xms512m </java-opts>
-    <arg> arg1 </arg>
-    <arg> arg2 </arg>
-    ...
-  </java>
+        <java>
+                ...
+                <main-class> a.b.c.MyJavaMain </main-class>
+                <java-opts> -Xms512m </java-opts>
+                <arg> arg1 </arg>
+                <arg> arg2 </arg>
+                ...
+        </java>
 </action>
