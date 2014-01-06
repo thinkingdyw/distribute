@@ -1,10 +1,12 @@
 <action name='java1'>
         <java>
-                ...
-                <main-class> a.b.c.MyJavaMain </main-class>
-                <java-opts> -Xms512m </java-opts>
-                <arg> arg1 </arg>
-                <arg> arg2 </arg>
-                ...
+                <job-tracker>foo.bar:8021</job-tracker>
+                <name-node>foo1.bar:8020</name-node>
+                <configuration>
+                        <property>
+                                <name>mapred.job.queue.name</name>
+                                <value>def</value>
+                        </property>
+                </configuration>
         </java>
 </action>
