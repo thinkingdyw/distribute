@@ -1,27 +1,31 @@
-package org.apache.oozie.test;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.conf.Configuration;
+import java.io.File;
+import java.io.IOException;
  
-import java.io.*;
-import java.util.Properties;
+public class TestCopyFromLocal {
  
-public class MyTest {
- 
-   ////////////////////////////////
-   // Do whatever you want in here
-   ////////////////////////////////
-   public static void main (String[] args){
-      String fileName = args[0];
-      try{
-         File file = new File(System.getProperty("oozie.action.output.properties"));
-         Properties props = new Properties();
-         props.setProperty("PASS_ME", "123456");
- 
-         OutputStream os = new FileOutputStream(file);
-         props.store(os, "");
-         os.close();
-         System.out.println(file.getAbsolutePath());
-      }
-      catch (Exception e) {
-         e.printStackTrace();
-      }
-   }
+        public static void main (String[] args) throws IOException {
+                String src = args[0];
+                String dst = args[1];
+                System.out.println("testCopyFromLocal, source= " + src);
+                System.out.println("testCopyFromLocal, target= " + dst);
+                Configuration conf = new Configuration();
+                Path src1 = new Path(src);
+                Path dst1 = new Path(dst);
+                FileSystem fs = FileSystem.get(conf);
+                try{
+                   //delete local file after copy
+                   fs.copyFromLocalFile(true, true, src1, dst1);
+                }
+                catch(IOException ex) {
+                   System.err.println("IOException during copy operation " +
+                                       ex.toString());
+                   ex.printStackTrace();
+                   System.exit(1);
+                }
+        }
 }
