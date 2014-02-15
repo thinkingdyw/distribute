@@ -1,8 +1,5 @@
-public class WordCount
-{
-  public static void main(String[] args)
-    throws Exception
-  {
+public class WordCount{
+  public static void main(String[] args)throws Exception{
     Configuration conf = new Configuration();
     String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
     if (otherArgs.length != 2) {
