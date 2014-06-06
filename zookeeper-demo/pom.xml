@@ -2,36 +2,35 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>oozie</groupId>
-	<artifactId>oozie-commons</artifactId>
+	<groupId>com.jd.bse</groupId>
+	<artifactId>zookeeper-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>oozie-commons</name>
+	<name>zookeeper-demo</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<zookeeper.version>3.4.5</zookeeper.version>
 		<org.slf4j.version>1.6.1</org.slf4j.version>
-		<apache.commons.beans>1.8.2</apache.commons.beans>
-		<oozie.version>2.3.2-cdh3u3</oozie.version>
-		<hadoop.version>0.20.2-cdh3u3</hadoop.version>
 	</properties>
 
 	<dependencies>
-		<!-- Test -->
+		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- zookeeper -->
 		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>${apache.commons.beans}</version>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>${zookeeper.version}</version>
 		</dependency>
-		<!-- Logging -->
+		<!-- log -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -55,32 +54,25 @@
 			<version>1.2.16</version>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- hadoop -->
 		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-core</artifactId>
-			<version>${hadoop.version}</version>
-		</dependency>
-		<!-- oozie -->
-		<dependency>
-			<groupId>com.yahoo.oozie</groupId>
-			<artifactId>oozie-client</artifactId>
-			<version>${oozie.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.yahoo.oozie</groupId>
-			<artifactId>oozie-core</artifactId>
-			<version>${oozie.version}</version>
+			<groupId>com.jd</groupId>
+			<artifactId>saf</artifactId>
+			<version>1.0.9</version>
 			<exclusions>
 				<exclusion>
-					<groupId>postgresql</groupId>
-					<artifactId>postgresql</artifactId>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-rt-frontend-jaxws</artifactId>
 				</exclusion>
 				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-rt-transports-http</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.jd.lbm</groupId>
+			<artifactId>lbm-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
