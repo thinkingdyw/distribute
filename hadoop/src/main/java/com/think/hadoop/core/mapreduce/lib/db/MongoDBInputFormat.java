@@ -113,7 +113,7 @@ public class MongoDBInputFormat extends InputFormat<LongWritable, MongoDBWritabl
 			    if ((i + 1) == chunks)
 			      split = new MongoDBInputSplit(i * chunkSize, count);
 			    else
-			      split = new MongoDBInputSplit(i * chunkSize+1, (i * chunkSize)
+			      split = new MongoDBInputSplit(i * chunkSize, (i * chunkSize)
 			          + chunkSize);
 
 			    splits.add(split);
