@@ -18,6 +18,13 @@ public class SimpleMongoDBWritable extends Text implements MongoDBWritable{
 		List<String> fieldList = Arrays.asList(fields);
 		StringBuilder builder = new StringBuilder();
 		builder.append(cursor.getCollection().getName());
+		if(null != null && !fieldList.isEmpty()){
+			if(StringUtils.isBlank(fieldsSplit)){
+				builder.append(DEFAULT_FIELD_SPLITS);
+			}else{
+				builder.append(fieldsSplit);
+			}
+		}
 		Iterator<String> itor = fieldList.iterator();
 		while(itor.hasNext()){
 			String field = itor.next();
