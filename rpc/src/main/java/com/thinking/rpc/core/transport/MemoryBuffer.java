@@ -28,7 +28,7 @@ public class MemoryBuffer extends Transport {
 	}
 
 	@Override
-	public void write(byte[] buffer) throws IOException {
+	public void write(byte[] buffer, int off, int length) throws IOException {
 		buf.write(buffer);
 	}
 

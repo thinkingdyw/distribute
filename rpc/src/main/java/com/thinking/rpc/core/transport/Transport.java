@@ -13,12 +13,6 @@ public abstract class Transport implements Closeable{
 	public abstract boolean isOpen();
 
 	public abstract int read(byte[] buffer,int off,int length);
-	
-	public void read(byte[] buffer) throws IOException{
-		throw new IOException("read operation is not implement");
-	}
 
-	public void write(byte[] buffer) throws IOException {
-		throw new IOException("write operation is not implement");
-	}
+	public abstract void write(byte[] buffer,int off,int length) throws IOException;
 }

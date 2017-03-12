@@ -1,4 +1,4 @@
-package com.thinking.rpc.core.protocal;
+package com.thinking.rpc.core.protocol;
 
 import java.io.IOException;
 

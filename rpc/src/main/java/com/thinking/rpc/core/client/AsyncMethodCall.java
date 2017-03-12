@@ -6,8 +6,8 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.thinking.rpc.core.protocal.JSONProtocol;
-import com.thinking.rpc.core.protocal.Protocol;
+import com.thinking.rpc.core.protocol.JSONProtocol;
+import com.thinking.rpc.core.protocol.Protocol;
 import com.thinking.rpc.core.transport.MemoryBuffer;
 import com.thinking.rpc.core.transport.NonblockingTransport;
 import com.thinking.rpc.core.utils.Bits;
@@ -83,8 +83,8 @@ public abstract class AsyncMethodCall<T> {
 	public void prepare(){
 		//1、首先将消息写入内存缓冲区，此时客户端就可以返回了，方法的调用交给方法调用管理器
 		MemoryBuffer memoryBuffer = new MemoryBuffer(128);
-		Protocol protocal = new JSONProtocol(memoryBuffer);
-		write(protocal);
+		Protocol protocol = new JSONProtocol(memoryBuffer);
+		write(protocol);
 		
 		bodyBuffer = ByteBuffer.wrap(memoryBuffer.getContent());
 		//将整数转成字节

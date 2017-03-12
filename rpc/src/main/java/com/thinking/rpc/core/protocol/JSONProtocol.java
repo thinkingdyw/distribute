@@ -1,4 +1,4 @@
-package com.thinking.rpc.core.protocal;
+package com.thinking.rpc.core.protocol;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -14,7 +14,7 @@ public class JSONProtocol extends Protocol{
 	@Override
 	public int read(byte[] buffer) throws IOException {
 		ByteBuffer buf = ByteBuffer.allocate(buffer.length);
-		getTransport().read(buffer);
+		getTransport().read(buffer,0,buffer.length);
 		buf.flip();
 		buf.get(buffer);
 		return buf.limit();
@@ -22,6 +22,6 @@ public class JSONProtocol extends Protocol{
 
 	@Override
 	public void write(byte[] buffer) throws IOException {
-		getTransport().write(buffer);
+		getTransport().write(buffer,0,buffer.length);
 	}
 }
